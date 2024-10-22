@@ -1,0 +1,32 @@
+.sidebar {
+  background-color: #0c0c0c;
+  padding: 10px 20px 22px 20px;
+  opacity: 0.9;
+  border-radius: 32px;
+
+  nav ul li a {
+    position: relative;
+    color: #fff;
+
+    &.active {
+      color: #78cc6d;
+    }
+
+    span {
+      position: absolute;
+      left: 25px;
+      color: #323232;
+      background-color: #78cc6d;
+      padding: 7px 9px;
+      letter-spacing: 2px;
+      font-size: 12px;
+      visibility: hidden;
+      transition: 0.2s ease 0s;
+    }
+
+    &:hover span {
+      visibility: visible;
+      left: 33px;
+    }
+  }
+}
