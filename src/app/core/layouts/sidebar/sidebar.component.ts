@@ -11,11 +11,11 @@ import { RouterModule } from '@angular/router';
 })
 export class SidebarComponent {
   menuItems = [
-    { label: 'About', icon: 'fa-solid fa-user-pen', link: '/about' },
-    { label: 'Skills', icon: 'fa-solid fa-dumbbell', link: '/skills' },
+    { label: 'About', icon: 'fa-solid fa-address-card', link: '/about' },
+    { label: 'Skills', icon: 'fa-solid fa-code', link: '/skills' },
     { label: 'Services', icon: 'fa-solid fa-screwdriver-wrench', link: '/services' },
-    { label: 'Projects', icon: 'fa-solid fa-briefcase', link: 'projects' },
-    { label: 'Resume', icon: 'fa-solid fa-building-columns', link: '/resume' },
-    { label: 'Contact', icon: 'fa-regular fa-paper-plane', link: '/contact' },
+    { label: 'Projects', icon: 'fa-solid fa-folder-open', link: 'projects' },
+    { label: 'Resume', icon: 'fa-solid fa-user-tie', link: '/resume' },
+    { label: 'Contact', icon: 'fa-solid fa-phone', link: '/contact' },
   ]
 }

@@ -1,1 +1,28 @@
-<p>profile-content works!</p>
+<div class="profile-content">
+    <div class="profile-image">
+        <div class="image"></div>
+    </div>
+    <div class="information d-flex flex-column gap-4 text-center">
+        <div class="position">
+            <h3 class="fw-bold text-uppercase">Front-end Developer</h3>
+        </div>
+        <div class="title">
+            <h3 class="fw-bold text-uppercase">Ramazan İsmayılov</h3>
+        </div>
+        <div class="socials">
+            <ul class="d-flex align-items-center justify-content-center gap-3">
+                <li *ngFor="let item of socialItems">
+                    <a [href]="item.link" target="_blank"><i [class]="item.icon"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer d-flex align-items-center justify-content-center gap-5 py-4">
+        <div class="download-cv">
+            <a download="Ramazan İsmayılov.pdf" href="../../../../assets/pdf/Cv.pdf"  class="fw-bold">Download CV</a>
+        </div>
+        <div class="contact-me">
+            <a href="/contact" class="fw-bold">Contact Me</a>
+        </div>
+    </div>
+</div>
