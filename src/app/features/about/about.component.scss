@@ -1,0 +1,83 @@
+.about {
+  background-color: #0c0c0c;
+  opacity: 0.9;
+  border-radius: 0 32px 0 0;
+  padding: 40px 30px;
+
+  .badge {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 32px;
+    width: max-content;
+  }
+
+  .subtitle {
+    h3 {
+      font-size: 24px;
+      letter-spacing: 1.7px;
+    }
+
+    .headline h3 {
+      color: #fff;
+    }
+
+    .words {
+      //   position: absolute;
+      //   display: inline-block;
+      //   vertical-align: top;
+      //   left: 120px;
+
+      h3 {
+        color: #78cc6d;
+        // position: absolute;
+        // opacity: 0;
+        // transform: translateY(-100%);
+        // animation: changeWord 6s linear infinite;
+
+        // &:nth-child(1) {
+        //   animation-delay: 0s;
+        // }
+
+        // &:nth-child(2) {
+        //   animation-delay: 3s; /* Növbəti söz 3 saniyədən sonra gələcək */
+        // }
+      }
+    }
+  }
+
+  .title h2 {
+    color: #78cc6d;
+    font-size: 30px;
+  }
+
+  .description p {
+    color: #eaeaea;
+    font-size: 17px;
+    letter-spacing: 1.3px;
+    line-height: 22px;
+  }
+}
+
+// @keyframes changeWord {
+//   0% {
+//     opacity: 0;
+//     transform: translateY(-100%); /* Yuxarıdan başlayır */
+//   }
+//   5% {
+//     opacity: 1;
+//     transform: translateY(0); /* Ortada görünür */
+//   }
+//   25% {
+//     opacity: 1;
+//     transform: translateY(0); /* Sabit qalır */
+//   }
+//   30% {
+//     opacity: 0;
+//     transform: translateY(100%); /* Aşağıya doğru yox olur */
+//   }
+//   100% {
+//     opacity: 0;
+//     transform: translateY(100%); /* Aşağıda qalır */
+//   }
+// }
