@@ -1,6 +1,10 @@
 .profile-content {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0)
+  );
   background-color: #0c0c0c;
-  opacity: 0.9;
   border-radius: 32px 0 32px 32px;
 
   .profile-image {

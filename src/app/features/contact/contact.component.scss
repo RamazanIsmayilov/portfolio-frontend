@@ -1,0 +1,71 @@
+.contact {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0)
+  );
+  background-color: #0c0c0c;
+  border-radius: 0 32px 32px 32px;
+  padding: 40px 30px;
+
+  .title h3 {
+    font-size: 35px;
+    color: #fff;
+  }
+
+  .my-information {
+    .box {
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.02),
+        rgba(0, 0, 0, 0.2)
+      );
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 15px;
+      padding: 30px 20px;
+
+      i {
+        color: #78cc6d;
+        font-size: 36px;
+      }
+      span {
+        font-size: 17px;
+        color: #eaeaea;
+        letter-spacing: 1.2px;
+      }
+    }
+  }
+
+  form {
+    input,
+    textarea {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #78cc6d;
+      font-size: 16px;
+      letter-spacing: 1px;
+
+      &::placeholder {
+        color: #7e7c7c;
+        font-size: 15px;
+      }
+    }
+
+    button {
+      color: #fff;
+      font-size: 17px;
+      letter-spacing: 1px;
+      transition: 0.2s ease;
+
+      i {
+        transition: 0.4s;
+      }
+
+      &:hover {
+        color: #78cc6d;
+        i {
+          transform: translateX(5px);
+        }
+      }
+    }
+  }
+}
