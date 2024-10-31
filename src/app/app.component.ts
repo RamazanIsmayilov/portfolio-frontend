@@ -1,19 +1,23 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { FooterComponent } from "./core/layouts/footer/footer.component";
 import { SidebarComponent } from "./core/layouts/sidebar/sidebar.component";
 import { ProfileContentComponent } from "./shared/components/profile-content/profile-content.component";
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FooterComponent, SidebarComponent, ProfileContentComponent],
+  imports: [RouterOutlet, FooterComponent, SidebarComponent, ProfileContentComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  // backgroundVideoSrc: string = '../assets/videos/background.mp4'
+  showSidebarAndProfileContent: boolean = true;
 
-  // constructor() {
-  //   console.log(this.backgroundVideoSrc);
-  // }
+  constructor(private router: Router) {
+    this.router.events.subscribe(() => {
+      const currentUrl = this.router.url
+      this.showSidebarAndProfileContent = !['/login', '/register'].includes(currentUrl);
+    })
+  } 
 }

@@ -6,10 +6,10 @@
 </div>
 
 <div class="content my-5">
-    <div class="container d-flex align-items-center gap-3">
-        <app-sidebar></app-sidebar>
-        <app-profile-content></app-profile-content>
+    <div [ngClass]="showSidebarAndProfileContent ? 'container d-flex align-items-center gap-3' : ''">
+        <app-sidebar *ngIf="showSidebarAndProfileContent"></app-sidebar>
+        <app-profile-content *ngIf="showSidebarAndProfileContent"></app-profile-content>
         <router-outlet></router-outlet>
     </div>
-    <app-footer></app-footer>
+    <!-- <app-footer></app-footer> -->
 </div>
