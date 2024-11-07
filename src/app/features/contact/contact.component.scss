@@ -48,6 +48,10 @@
         color: #7e7c7c;
         font-size: 15px;
       }
+
+      &:focus{
+        border: 1px solid #78cc6d;
+      }
     }
 
     button {
