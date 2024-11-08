@@ -1,32 +1,52 @@
 <div class="container">
     <div class="register">
         <app-badge icon="fa-solid fa-user-plus" label="Register"></app-badge>
-        <form (ngSubmit)="handleSubmit()" class="d-flex flex-column gap-3 mt-4">
+        <form [formGroup]="myForm" (ngSubmit)="handleSubmit()" class="d-flex flex-column gap-3 mt-4">
             <div>
                 <label for="firstname" class="text-white mb-2">Firstname <sup class="text-danger">*</sup></label>
-                <input [(ngModel)]="userData.firstname" name="firstname" type="text" id="firstname" class="form-control bg-transparent py-2"
+                <input formControlName="firstname" type="text" id="firstname" class="form-control bg-transparent py-2"
                     placeholder="Enter your firstname">
+                <div *ngIf="myForm.get('firstname')?.touched || submitted && myForm.get('firstname')?.invalid"
+                    class="text-danger mt-2">
+                    <small *ngIf="myForm.get('firstname')?.errors?.['required']" style="font-size: 14px;">Firstname is
+                        required.</small>
+                </div>
             </div>
             <div>
                 <label for="lastname" class="text-white mb-2">Lastname <sup class="text-danger">*</sup></label>
-                <input [(ngModel)]="userData.lastname" name="lastname" type="text" id="lastname" class="form-control bg-transparent py-2"
+                <input formControlName="lastname" type="text" id="lastname" class="form-control bg-transparent py-2"
                     placeholder="Enter your lastname">
+                <div *ngIf="myForm.get('lastname')?.touched || submitted && myForm.get('lastname')?.invalid"
+                    class="text-danger mt-2">
+                    <small *ngIf="myForm.get('lastname')?.errors?.['required']" style="font-size: 14px;">Lastname is
+                        required.</small>
+                </div>
             </div>
             <div>
                 <label for="email" class="text-white mb-2">Email <sup class="text-danger">*</sup></label>
-                <input [(ngModel)]="userData.email" name="email" type="email" id="email" class="form-control bg-transparent py-2" placeholder="Enter your email">
+                <input formControlName="email" type="email" id="email" class="form-control bg-transparent py-2"
+                    placeholder="Enter your email">
+                <div *ngIf="myForm.get('email')?.touched || submitted && myForm.get('email')?.invalid" class="text-danger mt-2">
+                    <small *ngIf="myForm.get('email')?.errors?.['required']" style="font-size: 14px;">Email is
+                        required.</small>
+                </div>
             </div>
             <div class="password-container">
                 <label for="password" class="text-white mb-2">Password <sup class="text-danger">*</sup></label>
                 <div class="input-wrapper">
-                    <input [(ngModel)]="userData.password" name="password" [type]="type ? 'password' : 'text'" id="password" class="form-control bg-transparent py-2"
-                        placeholder="Enter your password">
+                    <input formControlName="password" [type]="type ? 'password' : 'text'" id="password"
+                        class="form-control bg-transparent py-2" placeholder="Enter your password">
                     <span class="toggle-password" (click)="togglePassword()">
-                        <i class="fas" [class.fa-eye]="type" [class.fa-eye-slash]="!type"></i>
+                        <i [ngClass]="{'fa fa-eye': type, 'fas fa-eye-slash': !type}"></i>
                     </span>
                 </div>
+                <div *ngIf="myForm.get('password')?.touched || submitted && myForm.get('password')?.invalid"
+                    class="text-danger mt-2">
+                    <small *ngIf="myForm.get('password')?.errors?.['required']" style="font-size: 14px;">Password is
+                        required.</small>
+                </div>
             </div>
-            <button class="w-100 mt-2 text-white">Submit</button>
+            <button type="submit" class="w-100 mt-2 text-white">Submit</button>
         </form>
     </div>
 </div>

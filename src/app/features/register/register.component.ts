@@ -1,47 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BadgeComponent } from "../../shared/components/badge/badge.component";
 import { AuthService } from '../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [BadgeComponent, CommonModule, FormsModule],
+  imports: [BadgeComponent, CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   type: boolean = true;
-  userData = {
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: ''
-  };
-  myForm: FormGroup
-  constructor(
-    private authService: AuthService,
-    private fb: FormBuilder
+  myForm!: FormGroup /* myForm: FormGroup =  new FormGroup({}); baslangic deyeri bu sekildede yazmaq olar */
+  submitted: boolean = false;
+  constructor(private authService: AuthService, private fb: FormBuilder) { }
 
-  ) {
+  ngOnInit(): void {
     this.myForm = this.fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required],
-    })
+      password: ['', Validators.required]
+    });
   }
 
   handleSubmit() {
-    this.authService.register(this.userData).subscribe({
-      next: () => {
-        console.log('Data saved successfully!');
-        this.userData = { firstname: '', lastname: '', email: '', password: '' };
-      },
-      error: (error) => {
-        console.error('An error occurred while saving data:', error);
-      }
-    });
+    this.submitted = true;
+    if (this.myForm.valid) {
+      this.authService.register(this.myForm.value).subscribe({
+        next: () => {
+          console.log('Data saved successfully!');
+          this.myForm.reset();
+          this.submitted = false;
+        },
+        error: (error) => {
+          console.error('An error occurred while saving data:', error);
+        },
+        complete: () => {
+          console.log('Observable completed');
+        }
+      });
+    } else {
+      console.log('Form is invalid');
+    }
   }
 
   togglePassword() {
