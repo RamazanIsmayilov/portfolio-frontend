@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { FooterComponent } from "./core/layouts/footer/footer.component";
 import { SidebarComponent } from "./core/layouts/sidebar/sidebar.component";
 import { ProfileContentComponent } from "./shared/components/profile-content/profile-content.component";
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FooterComponent, SidebarComponent, ProfileContentComponent, CommonModule],
+  imports: [RouterOutlet, SidebarComponent, ProfileContentComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

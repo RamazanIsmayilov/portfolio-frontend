@@ -7,8 +7,8 @@ import { ResumeComponent } from './features/resume/resume.component';
 import { ContactComponent } from './features/contact/contact.component';
 import { NotFoundComponent } from './features/not-found/not-found.component';
 import { NgModule } from '@angular/core';
-import { RegisterComponent } from './features/register/register.component';
-import { LoginComponent } from './features/login/login.component';
+import { RegisterComponent } from './features/auth/register/register.component';
+import { LoginComponent } from './features/auth/login/login.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/about', pathMatch: 'full' },
