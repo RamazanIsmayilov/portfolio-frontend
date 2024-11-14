@@ -1,0 +1,13 @@
+<div class="modal-overlay d-flex align-items-center justify-content-center">
+  <div class="modal-content d-flex flex-column bg-white p-4 rounded-3">
+    <div class="modal-header d-flex justify-content-between align-items-center mb-0">
+      <h2 class="fs-4 fw-bold">{{ title }}</h2>
+      <button (click)="onClose()" class="border-0 bg-transparent text-danger fs-3">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="modal-body pt-3">
+      <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </div>
+  </div>
+</div>

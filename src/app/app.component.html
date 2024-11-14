@@ -5,19 +5,12 @@
     </video>
 </div>
 
-<div class="content my-5">
+<div [ngClass]="{'content my-5': showSidebarAndProfileContent}">
     <div [ngClass]="{'container d-flex align-items-center gap-3': showSidebarAndProfileContent}">
         <ng-container *ngIf="showSidebarAndProfileContent">
             <app-sidebar></app-sidebar>
             <app-profile-content></app-profile-content>
         </ng-container>
-        <router-outlet></router-outlet>
-    </div>
-</div>
-
-<div class="admin-container d-flex align-items-center gap-5" *ngIf="showAdminSidebar">
-    <app-admin-sidebar></app-admin-sidebar>
-    <div class="admin-content">
         <router-outlet></router-outlet>
     </div>
 </div>

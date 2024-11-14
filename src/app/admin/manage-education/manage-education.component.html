@@ -1,1 +1,92 @@
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum magnam hic aspernatur ipsam animi quae qui. Ea nulla veritatis ullam odio aliquam architecto voluptatum enim, fuga quam voluptates cum nesciunt.</p>
+<div class="educations mt-3">
+  <div class="title mb-4">
+    <h2 class="fs-2 fw-bold">Education</h2>
+  </div>
+  <table>
+    <thead>
+      <tr class='text-center'>
+        <th scope="col">Id</th>
+        <th scope="col">StartDate</th>
+        <th scope="col">EndDate</th>
+        <th scope="col">CompanyName</th>
+        <th scope="col">Position</th>
+        <th scope="col">Description</th>
+        <th scope="col">Image</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class='text-center'>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Name</td>
+        <td>Name</td>
+        <td>Name</td>
+        <td>Name</td>
+        <td>Name</td>
+        <td class='d-flex align-items-center justify-content-center gap-2'>
+          <button class='border-0 bg-transparent text-danger fs-5'><i class="fa-regular fa-trash-can"></i></button>
+          <button class='border-0 bg-transparent text-primary fs-5'><i class="fa-regular fa-pen-to-square"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="add">
+    <button (click)="openModal()" class="text-light rounded-circle p-3 fs-5">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+  </div>
+  <app-modal *ngIf="isModalOpen" [title]="'Education'" [contentTemplate]="educationForm"
+    (close)="closeModal()"></app-modal>
+  <ng-template #educationForm>
+    <form>
+      <div class="form-group mb-3">
+        <label class="mb-2 fw-bold" for="startDate">StartDate</label>
+        <input type="number" id="startDate" class="form-control shadow-none" placeholder="Enter startDate..." />
+      </div>
+      <div class="form-group mb-3">
+        <label class="mb-2 fw-bold" for="endDate">EndDate</label>
+        <input type="text" id="endDate" class="form-control shadow-none" placeholder="Enter endDate..." />
+      </div>
+      <div class="form-group mb-3">
+        <label class="mb-2 fw-bold" for="companyName">CompanyName</label>
+        <input type="text" id="companyName" class="form-control shadow-none" placeholder="Enter companyName..." />
+      </div>
+      <div class="form-group mb-3">
+        <label class="mb-2 fw-bold" for="position">Position</label>
+        <input type="text" id="position" class="form-control shadow-none" placeholder="Enter position..." />
+      </div>
+      <div class="form-group mb-3">
+        <label class="mb-2 fw-bold" for="description">Description</label>
+        <textarea name="" id="description" class="form-control shadow-none"
+          placeholder="Enter description..."></textarea>
+      </div>
+      <div class="upload-image">
+        <div class="d-flex justify-content-center align-items-center w-100">
+          <label  htmlFor="dropzone-file"
+            class="d-flex flex-column justify-content-center align-items-center w-100 h-100 p-3 border border-secondary rounded">
+            <div class="d-flex flex-column align-items-center justify-content-center pt-4 pb-4">
+              <svg class="mb-3" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 16">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+              </svg>
+              <p class="text-secondary"><span class="fw-semibold">Click to upload</span> or drag and drop</p>
+            </div>
+            <input id="dropzone-file" type="file" class="d-none" multiple />
+          </label>
+        </div>
+        <div class="image-preview my-3">
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+              <div class="preview-image border p-2">
+                <img class="img-fluid" src="" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Add Education</button>
+    </form>
+  </ng-template>
+</div>
