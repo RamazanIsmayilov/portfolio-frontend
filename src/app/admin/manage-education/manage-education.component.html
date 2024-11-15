@@ -16,16 +16,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr class='text-center'>
-        <td>Id</td>
-        <td>Name</td>
-        <td>Name</td>
-        <td>Name</td>
-        <td>Name</td>
-        <td>Name</td>
-        <td>Name</td>
+      <tr class='text-center' *ngFor="let education of educationList">
+        <td>{{education._id}}</td>
+        <td>{{education.startDate | date:'MM/dd/yyyy'}}</td>
+        <td>{{education.endDate}}</td>
+        <td>{{education.companyName}}</td>
+        <td>{{education.position}}</td>
+        <td>{{education.description}}</td>
+        <td>
+          <img *ngIf="education.image" [src]="education.image" alt="Image" width="50" />
+        </td>
         <td class='d-flex align-items-center justify-content-center gap-2'>
-          <button class='border-0 bg-transparent text-danger fs-5'><i class="fa-regular fa-trash-can"></i></button>
+          <button (click)="deleteEducation(education._id)" class='border-0 bg-transparent text-danger fs-5'><i class="fa-regular fa-trash-can"></i></button>
           <button class='border-0 bg-transparent text-primary fs-5'><i class="fa-regular fa-pen-to-square"></i></button>
         </td>
       </tr>
@@ -39,51 +41,37 @@
   <app-modal *ngIf="isModalOpen" [title]="'Education'" [contentTemplate]="educationForm"
     (close)="closeModal()"></app-modal>
   <ng-template #educationForm>
-    <form>
+    <form [formGroup]="myEducationForm" (ngSubmit)="handleSubmit()">
       <div class="form-group mb-3">
         <label class="mb-2 fw-bold" for="startDate">StartDate</label>
-        <input type="number" id="startDate" class="form-control shadow-none" placeholder="Enter startDate..." />
+        <input type="date" id="startDate" formControlName="startDate" class="form-control shadow-none" placeholder="Enter startDate..." />
       </div>
       <div class="form-group mb-3">
         <label class="mb-2 fw-bold" for="endDate">EndDate</label>
-        <input type="text" id="endDate" class="form-control shadow-none" placeholder="Enter endDate..." />
+        <input type="date" id="endDate" formControlName="endDate" class="form-control shadow-none" placeholder="Enter endDate..." />
       </div>
       <div class="form-group mb-3">
         <label class="mb-2 fw-bold" for="companyName">CompanyName</label>
-        <input type="text" id="companyName" class="form-control shadow-none" placeholder="Enter companyName..." />
+        <input type="text" id="companyName" formControlName="companyName" class="form-control shadow-none" placeholder="Enter companyName..." />
       </div>
       <div class="form-group mb-3">
         <label class="mb-2 fw-bold" for="position">Position</label>
-        <input type="text" id="position" class="form-control shadow-none" placeholder="Enter position..." />
+        <input type="text" id="position" formControlName="position" class="form-control shadow-none" placeholder="Enter position..." />
       </div>
       <div class="form-group mb-3">
         <label class="mb-2 fw-bold" for="description">Description</label>
-        <textarea name="" id="description" class="form-control shadow-none"
+        <textarea name="" id="description" formControlName="description" class="form-control shadow-none"
           placeholder="Enter description..."></textarea>
       </div>
       <div class="upload-image">
-        <div class="d-flex justify-content-center align-items-center w-100">
-          <label  htmlFor="dropzone-file"
-            class="d-flex flex-column justify-content-center align-items-center w-100 h-100 p-3 border border-secondary rounded">
-            <div class="d-flex flex-column align-items-center justify-content-center pt-4 pb-4">
-              <svg class="mb-3" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 16">
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                  d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-              </svg>
-              <p class="text-secondary"><span class="fw-semibold">Click to upload</span> or drag and drop</p>
-            </div>
-            <input id="dropzone-file" type="file" class="d-none" multiple />
-          </label>
-        </div>
-        <div class="image-preview my-3">
-          <div class="row">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-              <div class="preview-image border p-2">
-                <img class="img-fluid" src="" alt="" />
-              </div>
-            </div>
+        <label for="dropzone-file" class="upload-label">
+          <input id="dropzone-file" type="file" (change)="onFileChange($event)" class="d-none" />
+          <div class="d-flex flex-column align-items-center">
+            <span>Click to upload or drag and drop</span>
           </div>
+        </label>
+        <div class="image-preview my-3" *ngIf="selectedImage">
+          <img [src]="selectedImage ? (selectedImage | fileUrl) : ''" alt="Selected Image" class="img-fluid preview-image"/>
         </div>
       </div>
       <button type="submit" class="btn btn-primary w-100">Add Education</button>
