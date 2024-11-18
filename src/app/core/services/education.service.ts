@@ -22,7 +22,7 @@ export class EducationService {
     return this.http.get<EducationListDto[]>(this.apiUrl);
   }
 
-  updateEducation(id: string, education: UpdateEducationDto): Observable<EducationListDto> {
+  updateEducation(id: string, education: UpdateEducationDto | FormData): Observable<EducationListDto> {
     return this.http.put<EducationListDto>(`${this.apiUrl}/${id}`, education);
   }
 
